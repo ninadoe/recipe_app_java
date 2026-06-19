@@ -1,28 +1,48 @@
 package com.nnd.recipe_app_java.controller;
 
-import com.nnd.recipe_app_java.model.MealType;
 import com.nnd.recipe_app_java.model.Recipe;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import com.nnd.recipe_app_java.service.RecipeService;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 
 @RestController
 public class RecipeController {
-    // test get endpoint
-    @GetMapping("/testRecipe")
-    public Recipe getRecipe() {
-        System.out.println("GET HIT");
-        Recipe dummyRecipe = new Recipe();
-        dummyRecipe.setName("Pizza Margarita");
-        dummyRecipe.setPortions(2);
-        dummyRecipe.setMealType(MealType.Main);
-        return dummyRecipe;
+    private final RecipeService recipeService;
+
+    RecipeController(RecipeService recipeService) {
+        this.recipeService = recipeService;
     }
 
-    // test post endpoint
+    /**
+     * Returns all stored recipes.
+     *
+     * @return list of all recipes
+     */
+    @GetMapping("/recipes")
+    public ArrayList<Recipe> getAllRecipes() {
+        return recipeService.findAllRecipes();
+    }
+
+    /**
+     * Retrieves a single recipe by its unique identifier.
+     *
+     * @param id unique identifier of the recipe
+     * @return the matching Recipe object
+     */
+    @GetMapping("/recipes/{id}")
+    public Recipe getRecipeById(@PathVariable int id) {
+        return recipeService.findRecipeById(id);
+    }
+
+    /**
+     * Creates a new recipe and stores it in the system.
+     *
+     * @param recipe the recipe data sent by the client
+     * @return the created Recipe object
+     */
     @PostMapping("/newRecipe")
     public Recipe createRecipe(@RequestBody Recipe recipe) {
-        return recipe;
+        return recipeService.createRecipe(recipe);
     }
 }
