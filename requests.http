@@ -1,10 +1,55 @@
-### GET request to example server
-GET http://localhost:8080/testRecipe
-
-### POST request
+### POST request: create new recipe
 POST http://localhost:8080/newRecipe
 Content-Type: application/json
 
 {
-  "name": "Pizza"
+  "id": 1,
+  "name": "Kopfsalat",
+  "ingredients": [
+    {
+      "name": "Kopfsalat",
+      "amount": 1,
+      "unit": "pc"
+    },
+    {
+      "name": "Wasser",
+      "amount": 2,
+      "unit": "tbsp"
+    },
+    {
+      "name": "Rapsöl",
+      "amount": 1,
+      "unit": "tbsp"
+    },
+    {
+      "name": "Zitrone",
+      "amount": 1,
+      "unit": "pc"
+    },
+    {
+      "name": "Schalotte",
+      "amount": 1,
+      "unit": "pc"
+    },
+    {
+      "name": "Zucker",
+      "amount": 2,
+      "unit": "tsp"
+    },
+    {
+      "name": "Salz"
+    }
+  ],
+  "method": ["Salat waschen und trocken schütteln (am besten mit der Salatschleuder). Den Strunk entfernen und ihn in mundgerechte Stücke teilen.",
+    "Schalotte schälen und sehr fein würfeln und Zitrone auspressen. Den Zitronensaft mit Rapsöl, Wasser, Zucker, Salz und den Schalottenwürfeln verrühren.",
+    "Das Dressing unter den Salat heben."],
+  "portions": 4,
+  "mealType": "Salad",
+  "diet": "Vegan"
 }
+
+### GET request: show all saved recipes
+GET http://localhost:8080/recipes
+
+### GET request: show recipe with ID 1
+http://localhost:8080/recipes/1
