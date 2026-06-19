@@ -1,19 +1,22 @@
 package com.nnd.recipe_app_java.model;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
-@Builder
-@Getter
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Recipe {
-    private final int id;
-    private final String name;
-    private final Ingredient[] ingredients;
-    private final String[] method;
-    private final String[] utensils; // optional
-    private final Integer portions; // optional
-    private final MealType mealType; // optional
-    private final Diet diet; // optional
-    private final String origin; // optional
+    private Integer id;
+    private String name;
+    private Ingredient[] ingredients;
+    private String[] method;
+    private String[] utensils; // optional
+    private Integer portions; // optional
+    private MealType mealType; // optional
+    private Diet diet; // optional
+    private PrimaryCarb primaryCarb; // optional
+    private String origin; // optional
     private String note; // optional
 }
