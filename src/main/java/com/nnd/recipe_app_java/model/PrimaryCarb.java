@@ -1,14 +1,14 @@
 package com.nnd.recipe_app_java.model;
 
 public enum PrimaryCarb {
-    Potatoes,
-    Rice,
-    Pasta,
+    Kartoffeln,
+    Reis,
+    Nudeln,
     Pizza,
     Tortilla,
-    Bread,
+    Brot,
     Couscous,
     Bulgur,
     Quinoa,
-    Dough
+    Teig
 }

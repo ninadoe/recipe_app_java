@@ -1,11 +1,11 @@
 package com.nnd.recipe_app_java.model;
 
 public enum MealType {
-    Main,
-    Soup,
-    Salad,
+    Hauptmahlzeit,
+    Suppe,
+    Salat,
     Dessert,
-    Pastry,
+    Gebäck,
     Snack,
     Sauce
 }
