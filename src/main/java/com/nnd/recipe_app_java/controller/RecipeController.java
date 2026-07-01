@@ -2,6 +2,7 @@ package com.nnd.recipe_app_java.controller;
 
 import com.nnd.recipe_app_java.model.Recipe;
 import com.nnd.recipe_app_java.service.RecipeService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -30,8 +31,8 @@ public class RecipeController {
      * @param id unique identifier of the recipe
      * @return the matching Recipe object
      */
-    @GetMapping("/recipes/{id}")
-    public Recipe getRecipeById(@PathVariable int id) {
+    @GetMapping("/recipe/{id}")
+    public Recipe getRecipeById(@PathVariable Long id) {
         return recipeService.findRecipeById(id);
     }
 
@@ -41,8 +42,30 @@ public class RecipeController {
      * @param recipe the recipe data sent by the client
      * @return the created Recipe object
      */
-    @PostMapping("/newRecipe")
-    public Recipe createRecipe(@RequestBody Recipe recipe) {
+    @PostMapping("/recipe/create")
+    public Recipe createRecipe(@Valid @RequestBody Recipe recipe) {
         return recipeService.createRecipe(recipe);
+    }
+
+    /**
+     * Deletes a single recipe by its unique identifier.
+     *
+     * @param id unique identifier of the recipe
+     * @return the matching Recipe object
+     */
+    @DeleteMapping("/recipe/delete/{id}")
+    public Recipe deleteRecipe(@PathVariable Long id) {
+        return recipeService.deleteRecipeById(id);
+    }
+
+    /**
+     * Update a single recipe by its unique identifier.
+     *
+     * @param id unique identifier of the recipe
+     * @return the matching updated Recipe object
+     */
+    @PutMapping("/recipe/update/{id}")
+    public Recipe updateRecipe(@PathVariable Long id, @Valid @RequestBody Recipe recipe) {
+        return recipeService.updateRecipeById(id, recipe);
     }
 }
