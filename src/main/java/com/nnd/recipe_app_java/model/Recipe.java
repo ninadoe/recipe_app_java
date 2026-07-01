@@ -12,11 +12,11 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 public class Recipe {
     private Long id;
-    @NotBlank
+    @NotBlank(message = "Recipe name is required.")
     private String name;
-    @NotEmpty
+    @NotEmpty(message = "Ingredients are required.")
     private Ingredient[] ingredients;
-    @NotEmpty
+    @NotEmpty(message = "Method is required.")
     private String[] method;
     private String[] utensils; // optional
     private Integer portions; // optional

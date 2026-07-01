@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class Ingredient {
-    @NotBlank
+    @NotBlank(message = "Ingredient name is required.")
     private String name;
     private Double amount; // optional
     private Unit unit; // optional
