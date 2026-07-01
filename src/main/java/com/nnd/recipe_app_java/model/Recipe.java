@@ -1,16 +1,22 @@
 package com.nnd.recipe_app_java.model;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Recipe {
-    private Integer id;
+    private Long id;
+    @NotBlank
     private String name;
+    @NotEmpty
     private Ingredient[] ingredients;
+    @NotEmpty
     private String[] method;
     private String[] utensils; // optional
     private Integer portions; // optional
